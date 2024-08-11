@@ -25,9 +25,10 @@ WIP
 | SEVERSON | LFP/graphite | 1.1 | 2.0-3.6 | 823±368 | 93±7 | 36±36 | 180 |
 
 ## Benchmark result of ML predictions
+WIP
 
 ## Benchmark result of ASOH Forecasting
-
+WIP
 
 ## Quick Start
 
