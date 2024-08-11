@@ -1,0 +1,6 @@
+git+https://github.com/rovi-org/battery-data-toolkit.git
+numpy
+pandas
+requests
+tqdm
+
