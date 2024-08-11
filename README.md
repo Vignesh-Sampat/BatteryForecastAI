@@ -38,6 +38,6 @@ WIP
 Download raw files of public datasets and preprocess them into `BatteryData` of BatteryML is now as simple as two commands:
 
 ```bash
-batteryforecast download CAMP /path/to/save/raw/data
+python batteryforecast/data/download.py CAMP dataset
 batteryforecast preprocess CAMP /path/to/save/raw/data /path/to/save/processed/data
 ```
