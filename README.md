@@ -34,7 +34,9 @@ WIP
 
 ### Install
 
-WIP
+```shell
+pip install -r requirements.txt
+```
 
 ### Download Raw Data and Run Preprocessing Scripts
 <!-- Download the raw data and execute the preprocessing scripts as per the provided [instruction](./dataprepare.md). You can also use the code below to download public datasets and convert them to BatteryML's uniform data format. -->
