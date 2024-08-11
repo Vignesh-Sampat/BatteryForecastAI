@@ -35,6 +35,8 @@ WIP
 ### Install
 
 ```shell
+git clone https://github.com/Vignesh-Sampat/BatteryForecastAI
+%cd BatteryForecastAI
 pip install -r requirements.txt
 ```
 
