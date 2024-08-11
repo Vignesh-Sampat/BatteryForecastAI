@@ -9,6 +9,8 @@ De-risking energy storage investments necessary to meet CO2 reduction targets re
 
 WIP
 
+<img src="/BatteryForecastAI/batteryforecast/image/FrameWork.png" width="800">
+
 ## Battery ML features
 
 - **ECM based features:** WIP
