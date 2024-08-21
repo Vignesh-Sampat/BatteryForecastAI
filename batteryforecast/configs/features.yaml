@@ -50,7 +50,7 @@ VandDVDTvsSOC:
 # SOCvsVoltage
 SOCvsVoltage:
   - None
-
+  -
 # Statistical Features
 RawStats:
   - None
