@@ -3,7 +3,7 @@ from scipy.interpolate import interp1d
 from scipy.optimize import minimize
 from scipy.signal import find_peaks
 from scipy.stats import norm
-from scipy.integrate import trapz
+from scipy.integrate import trapezoid
 
 def _smooth(x, y):
     yf = interp1d(x, y, kind='quadratic')
@@ -92,5 +92,5 @@ def _peakmse(scale, loc, val, x, y):
 def _peakarea(x, loc, val, scale):
     trial = norm.pdf(x, loc=loc, scale=scale)
     trial *= val/trial.max()
-    return trapz(trial, x)
+    return trapezoid(trial, x)
 
