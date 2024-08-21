@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from BatteryForecastAI.batteryforecast.feature.base_feature import FeatureExtractor
+from .base_feature import FeatureExtractor
 
 class ChargingTime(FeatureExtractor):
     """

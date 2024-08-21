@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from BatteryForecastAI.batteryforecast.feature.base_feature import FeatureExtractor
-from BatteryForecastAI.batteryforecast.utils.utils import _peakchar,_smooth
+from .base_feature import FeatureExtractor
+from ..utils.utils import _peakchar,_smooth
 
 class DQDVvsV(FeatureExtractor):
     """
