@@ -1,0 +1,56 @@
+# Basic Features in raw data
+Basic:
+  - Imed_ch #Median current during charging.
+  - Imed_di #Median current during discharging.
+  - Vavg_ch #Average voltage during charging.
+  - Vavg_di #Average voltage during discharging.
+  - Q_ch #Charge capacity during charging.
+  - Q_di #Charge capacity during discharging.
+  - E_ch #Energy during charging.
+  - E_di #Energy during discharging.
+  - Qeff #Efficiency of charge, comparing discharging to charging.
+  - Eeff #Efficiency of energy, comparing discharging to charging
+  - Inorm_ch #Normalized median current during charging.
+  - Inorm_di #Normalized median current during discharging.
+
+# Time based Features cycle data
+ChargingTime:
+  - t_ch #Total charging time for the cycle.
+  - tCC_ch #Time spent in the constant current (CC) phase during charging.
+  - tCV_ch #Time spent in the constant voltage (CV) phase during charging.
+  - tCCvsCVfrac_ch #The fraction of time spent in the constant current (CC) phase relative to the total charging time.
+  - t_di #Total discharging time for the cycle.
+  - tCC_di #Time spent in the constant current (CC) phase during discharging.
+  - tCV_di #Time spent in the constant voltage (CV) phase during discharging.
+  - tCCvsCVfrac_di #The fraction of time spent in the constant current (CC) phase relative to the total discharging time.
+
+TimeIntervalEqualVoltageChange:
+  - None
+  -
+# SOHfraction cycle data
+SOH:
+  - SOH #state of health (SOH) in fraction of nominal capacity
+
+# DQDVvsV Features cycle data
+DQDVvsV:
+  - None
+
+# DVDQvsQ Features cycle data
+DVDQvsQ:
+  - None
+
+# ECM Features cycle data
+ECM_Features:
+  - None
+
+# VandDVDTvsSOC
+VandDVDTvsSOC:
+  - None
+
+# SOCvsVoltage
+SOCvsVoltage:
+  - None
+
+# Statistical Features
+RawStats:
+  - None
