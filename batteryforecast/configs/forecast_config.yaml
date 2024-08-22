@@ -1,0 +1,61 @@
+# Configuration for forecasting model
+TemporalFusionTransformer:
+  PastCovariates:
+    - Imed_ch #Median current during charging.
+    - Imed_di #Median current during discharging.
+    - Vavg_ch #Average voltage during charging.
+  FutureCovariates:
+    - Vavg_di #Average voltage during discharging.
+  StaticCovariates:
+    - Q_ch #Charge capacity during charging.
+  HyperParameters:
+    random_state: 42
+    input_chunk_length: 50
+    output_chunk_length: 250
+    hidden_size: 64
+    num_attention_heads: 4
+    dropouts: 0.1
+    batch_size: 16
+    n_epochs: 100
+    loss: 'mse'
+    
+TsMixer:
+  PastCovariates:
+    - Imed_ch #Median current during charging.
+    - Imed_di #Median current during discharging.
+    - Vavg_ch #Average voltage during charging.
+  FutureCovariates:
+    - Vavg_di #Average voltage during discharging.
+  StaticCovariates:
+    - Q_ch #Charge capacity during charging.
+  HyperParameters:
+    random_state: 42
+    input_chunk_length: 50
+    output_chunk_length: 250
+    hidden_size: 64
+    num_attention_heads: 4
+    dropouts: 0.1
+    batch_size: 16
+    n_epochs: 100
+    loss: 'mse'
+ 
+TiDEModel:
+  PastCovariates:
+    - Imed_ch #Median current during charging.
+    - Imed_di #Median current during discharging.
+    - Vavg_ch #Average voltage during charging.
+  FutureCovariates:
+    - Vavg_di #Average voltage during discharging.
+  StaticCovariates:
+    - Q_ch #Charge capacity during charging.
+  HyperParameters:
+    random_state: 42
+    input_chunk_length: 50
+    output_chunk_length: 250
+    hidden_size: 64
+    num_attention_heads: 4
+    dropouts: 0.1
+    batch_size: 16
+    n_epochs: 100
+    loss: 'mse'
+ 
