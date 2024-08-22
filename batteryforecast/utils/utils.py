@@ -6,7 +6,7 @@ from scipy.stats import norm
 from scipy.integrate import trapezoid
 
 import numpy as np
-from scipy.integrate import cumtrapz
+from scipy.integrate import cumulative_trapezoid
 
 
 def get_acc_capacity(df):
@@ -49,9 +49,9 @@ def get_acc_capacity(df):
 
             # For charging or discharging steps, calculate capacity and energy
             if state in ['charging', 'discharging']:
-                s_cap = cumtrapz(
+                s_cap = cumulative_trapezoid(
                     step_data['current'], step_data['test_time'], initial=0) / 3600 + p
-                s_ene = cumtrapz(
+                s_ene = cumulative_trapezoid(
                     step_data['current'] * step_data['voltage'], step_data['test_time'], initial=0) / 3600 + q
                 p = s_cap[-1]  # Update last accumulated capacity
                 q = s_ene[-1]  # Update last accumulated energy
