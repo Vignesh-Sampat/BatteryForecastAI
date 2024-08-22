@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from .base_feature import FeatureExtractor
+from ..utils.utils import get_acc_capacity
 
 class SOHfraction(FeatureExtractor):
     """
@@ -50,6 +51,9 @@ class SOHfraction(FeatureExtractor):
         Returns:
             pd.DataFrame: A dataframe with cycle numbers as the index and SOH values in a column named 'SOH'.
         """
+        # include the accumulated capacity and accumulated energy
+        data = get_acc_capacity(data)
+
         # Initialize lists to store cycle numbers and corresponding SOH values
         cycle_number = []
         SOH = []

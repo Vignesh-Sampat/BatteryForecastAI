@@ -5,6 +5,81 @@ from scipy.signal import find_peaks
 from scipy.stats import norm
 from scipy.integrate import trapezoid
 
+import numpy as np
+from scipy.integrate import cumtrapz
+
+
+def get_acc_capacity(df):
+    """
+    Calculate the accumulated capacity and accumulated energy for each cycle
+    in a battery dataset.
+
+    This function processes a DataFrame representing battery test data and
+    computes the accumulated capacity and energy for each cycle. The results
+    are stored as new columns in the original DataFrame.
+
+    Args:
+        df (pandas.DataFrame): DataFrame containing battery test data. It should
+        include columns for 'cycle_number', 'step_index', 'state', 'current',
+        'voltage', and 'test_time'.
+
+    Returns:
+        pandas.DataFrame: The input DataFrame with added columns 'acc_capacity'
+        and 'acc_energy', representing the accumulated capacity and energy
+        for each cycle, respectively.
+    """
+
+    # Initialize arrays to store accumulated capacity and energy for each cycle
+    acc_capacity = np.array([])
+    acc_energy = np.array([])
+
+    # Group the DataFrame by cycle number
+    for cycle_num, cycle_data in df.groupby(['cycle_number']):
+        # Initialize arrays for capacity and energy within the current cycle
+        capacity = np.array([])
+        energy = np.array([])
+
+        # Initial values for the accumulated capacity and energy within the cycle
+        p = 0  # Last accumulated capacity
+        q = 0  # Last accumulated energy
+
+        # Process each step within the cycle
+        for step_idx, step_data in cycle_data.groupby(['step_index']):
+            state = step_data['state'].iloc[0]
+
+            # For charging or discharging steps, calculate capacity and energy
+            if state in ['charging', 'discharging']:
+                s_cap = cumtrapz(
+                    step_data['current'], step_data['test_time'], initial=0) / 3600 + p
+                s_ene = cumtrapz(
+                    step_data['current'] * step_data['voltage'], step_data['test_time'], initial=0) / 3600 + q
+                p = s_cap[-1]  # Update last accumulated capacity
+                q = s_ene[-1]  # Update last accumulated energy
+
+            # For other steps, the capacity and energy remain constant
+            else:
+                s_cap = np.ones(len(step_data)) * p
+                s_ene = np.ones(len(step_data)) * q
+
+            # Append calculated capacity and energy for the current step
+            capacity = np.append(capacity, s_cap)
+            energy = np.append(energy, s_ene)
+
+        # Adjust capacity and energy relative to the minimum value in the cycle
+        capacity -= capacity.min()
+        energy -= energy.min()
+
+        # Append the accumulated capacity and energy for the cycle
+        acc_capacity = np.append(acc_capacity, capacity)
+        acc_energy = np.append(acc_energy, energy)
+
+    # Add the accumulated capacity and energy to the DataFrame as new columns
+    df['acc_capacity'] = acc_capacity
+    df['acc_energy'] = acc_energy
+
+    return df
+
+
 def _smooth(x, y):
     yf = interp1d(x, y, kind='quadratic')
     xs = np.linspace(x.min(), x.max(), 1000)

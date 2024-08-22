@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from .base_feature import FeatureExtractor
+from ..utils.utils import get_acc_capacity
 
 
 class BasicFeatures(FeatureExtractor):
@@ -32,6 +33,8 @@ class BasicFeatures(FeatureExtractor):
         Returns:
             pd.DataFrame: A dataframe with cycle numbers as the index and extracted features as columns.
         """
+        # include the accumulated capacity and accumulated energy
+        data = get_acc_capacity(data)
         # Lists to store the features for each cycle
         cycle_number = []
         Imed_ch, Imed_di = [], []

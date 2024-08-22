@@ -1,5 +1,5 @@
 from .base_feature import FeatureExtractor
-from ..utils.utils import _peakchar,_smooth
+from ..utils.utils import _peakchar,_smooth,get_acc_capacity
 from scipy.signal import find_peaks
 import pandas as pd
 import numpy as np
@@ -60,6 +60,9 @@ class DVDQvsQ(FeatureExtractor):
             - 'dVdQvalleyXloc_state': Location of the dV/dQ valley.
             - 'dVdQvalleyXmag_state': Magnitude of the dV/dQ valley.
         """
+        # include the accumulated capacity and accumulated energy
+        data = get_acc_capacity(data)
+
         cycle_number = []
         peaklocarr, peakmagarr = [], []
         valleylocarr, valleymagarr = [], []

@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 from .base_feature import FeatureExtractor
-from ..utils.utils import _peakchar,_smooth
+from ..utils.utils import _peakchar,_smooth,get_acc_capacity
+
 
 class DQDVvsV(FeatureExtractor):
     """
@@ -56,6 +57,9 @@ class DQDVvsV(FeatureExtractor):
         Returns:
             pd.DataFrame: A dataframe with cycle numbers as the index and dQ/dV-related features as columns.
         """
+        # include the accumulated capacity and accumulated energy
+        data = get_acc_capacity(data)
+
         cycle_number = []
         peaklocarr, peakmagarr, peakareaarr = [], [], []
         valleylocarr, valleymagarr = [], []
