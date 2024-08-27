@@ -18,7 +18,7 @@ with open(data_file_path, 'r') as file:
     DOWNLOAD_LINKS = json.loads(json.load(file))
 
 
-#DOWNLOAD_LINKS['CAMP'] = DOWNLOAD_LINKS['CAMP'][0:3]
+DOWNLOAD_LINKS['CAMP'] = DOWNLOAD_LINKS['CAMP'][0:3]
 
 def download_file(url, data_dir):
     filename = url.split("/")[-1]
