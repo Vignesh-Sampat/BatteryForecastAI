@@ -1,13 +1,71 @@
 # Configuration for forecasting model
 TemporalFusionTransformer:
   PastCovariates:
+    - Discharge_capacity
+    - Discharge_energy
+    - R_10 #Internal resistance at 10% SOC
+    - R_20 #Internal resistance at 20% SOC
+    - R_30 #Internal resistance at 30% SOC
+    - R_40 #Internal resistance at 40% SOC
+    - R_50 #Internal resistance at 50% SOC
+    - R_60 #Internal resistance at 60% SOC
+    - R_70 #Internal resistance at 70% SOC
+    - R_80 #Internal resistance at 80% SOC
+    - R_90 #Internal resistance at 90% SOC
+    - OCV_10 #Open circuit voltage at 10% SOC
+    - OCV_20 #Open circuit voltage at 20% SOC
+    - OCV_30 #Open circuit voltage at 30% SOC
+    - OCV_40 #Open circuit voltage at 40% SOC
+    - OCV_50 #Open circuit voltage at 50% SOC
+    - OCV_60 #Open circuit voltage at 60% SOC
+    - OCV_70 #Open circuit voltage at 70% SOC
+    - OCV_80 #Open circuit voltage at 80% SOC
+    - OCV_90 #Open circuit voltage at 90% SOC
     - Imed_ch #Median current during charging.
     - Imed_di #Median current during discharging.
     - Vavg_ch #Average voltage during charging.
   FutureCovariates:
-    - Vavg_di #Average voltage during discharging.
-  StaticCovariates:
-    - Q_ch #Charge capacity during charging.
+    - Temperature #Input Stressors.
+    - Crate_discharge #Input Stressors
+  HyperParameters:
+    random_state: 42
+    input_chunk_length: 50
+    output_chunk_length: 250
+    hidden_size: 64
+    num_attention_heads: 4
+    dropouts: 0.1
+    batch_size: 16
+    n_epochs: 100
+    loss: 'mse'
+
+TSMixer:
+  PastCovariates:
+    - Discharge_capacity
+    - Discharge_energy
+    - R_10 #Internal resistance at 10% SOC
+    - R_20 #Internal resistance at 20% SOC
+    - R_30 #Internal resistance at 30% SOC
+    - R_40 #Internal resistance at 40% SOC
+    - R_50 #Internal resistance at 50% SOC
+    - R_60 #Internal resistance at 60% SOC
+    - R_70 #Internal resistance at 70% SOC
+    - R_80 #Internal resistance at 80% SOC
+    - R_90 #Internal resistance at 90% SOC
+    - OCV_10 #Open circuit voltage at 10% SOC
+    - OCV_20 #Open circuit voltage at 20% SOC
+    - OCV_30 #Open circuit voltage at 30% SOC
+    - OCV_40 #Open circuit voltage at 40% SOC
+    - OCV_50 #Open circuit voltage at 50% SOC
+    - OCV_60 #Open circuit voltage at 60% SOC
+    - OCV_70 #Open circuit voltage at 70% SOC
+    - OCV_80 #Open circuit voltage at 80% SOC
+    - OCV_90 #Open circuit voltage at 90% SOC
+    - Imed_ch #Median current during charging.
+    - Imed_di #Median current during discharging.
+    - Vavg_ch #Average voltage during charging.
+  FutureCovariates:
+    - Temperature #Input Stressors.
+    - Crate_discharge #Input Stressors
   HyperParameters:
     random_state: 42
     input_chunk_length: 50
